@@ -8,19 +8,19 @@ const Reducer = (state, action) => {
   switch (action.type) {
     case 'INCREMENT_A':
       return { ...state, counterA: state.counterA + 1 };
-    case 'DECREMENT_A':
+    case 'DECREMENTA':
       return {
         ...state,
         counterA: state.counterA > 0 ? state.counterA - 1 : 0,
       };
-    case 'INCREMENT_B':
+    case 'INCREMENTb':
       return { ...state, counterB: state.counterB + 1 };
-    case 'DECREMENT_B':
+    case 'DECREMENTb':
       return {
         ...state,
         counterB: state.counterB > 0 ? state.counterB - 1 : 0,
       };
-    case 'RESET_ALL':
+    case 'RESET':
       return InitialState;
     default:
       return state;
@@ -34,11 +34,10 @@ function App() {
     <div>
       <h2>Double Counter</h2>
 
-      {/* Counter A */}
       <div>
         <h3>Counter A: {state.counterA}</h3>
         <button
-          onClick={() => dispatch({ type: 'DECREMENT_A' })}
+          onClick={() => dispatch({ type: 'DECREMENTA' })}
           disabled={state.counterA === 0}
         >
           - A
@@ -48,23 +47,22 @@ function App() {
         </button>
       </div>
 
-      {/* Counter B */}
       <div>
         <h3>Counter B: {state.counterB}</h3>
         <button
-          onClick={() => dispatch({ type: 'DECREMENT_B' })}
+          onClick={() => dispatch({ type: 'DECREMENTb' })}
           disabled={state.counterB === 0}
         >
           - B
         </button>
-        <button onClick={() => dispatch({ type: 'INCREMENT_B' })}>
+        <button onClick={() => dispatch({ type: 'INCREMENTb' })}>
           + B
         </button>
       </div>
 
       {/* Reset both counters */}
       <div>
-        <button onClick={() => dispatch({ type: 'RESET_ALL' })}>
+        <button onClick={() => dispatch({ type: 'RESET' })}>
           Reset Both
         </button>
       </div>
